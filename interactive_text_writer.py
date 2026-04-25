@@ -23,4 +23,15 @@ class InteractiveTextWriter:
         self.save_button.pack()
         self.status_message = tkinter.Label(self.main_window, text="Status: Waiting for input...")
         self.status_message.pack()
+
+    def save_current_line(self):
+        current_text = self.user_input_field.get()
+        if current_text != "":
+            output_file = open(self.output_file_name, "a")
+            output_file.write(current_text + "\n")
+            output_file.close()
+            self.status_message.config(text="Status: Line saved successfully!")
+            self.user_input_field.delete(0, tkinter.END)
+        else:
+            self.status_message.config(text="Status: Please enter text first.")
     
