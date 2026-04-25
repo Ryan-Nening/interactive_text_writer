@@ -34,4 +34,8 @@ class InteractiveTextWriter:
             self.user_input_field.delete(0, tkinter.END)
         else:
             self.status_message.config(text="Status: Please enter text first.")
+
+    def run_application(self):
+        self.build_user_interface()
+        self.main_window.mainloop()
     
