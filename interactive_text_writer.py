@@ -10,7 +10,7 @@ class InteractiveTextWriter:
         self.main_window.geometry("500x450")
         self.main_window.configure(bg="#1e1e1e")
 
-   def build_user_interface(self):
+    def build_user_interface(self):
         title_font = font.Font(family="Helvetica", size=14, weight="bold")
         normal_font = font.Font(family="Helvetica", size=11)
         
@@ -34,14 +34,17 @@ class InteractiveTextWriter:
 
     def save_current_line(self):
         current_text = self.user_input_field.get()
-        if current_text != "":
+        if current_text.strip() != "":
             output_file = open(self.output_file_name, "a")
             output_file.write(current_text + "\n")
             output_file.close()
-            self.status_message.config(text="Status: Line saved successfully!")
+            
+            self.status_message.config(text="Status: Entry saved successfully!", fg="#4CAF50")
+            self.entry_history_box.insert(tkinter.END, "  > " + current_text) 
             self.user_input_field.delete(0, tkinter.END)
+            self.entry_history_box.yview(tkinter.END) 
         else:
-            self.status_message.config(text="Status: Please enter text first.")
+            self.status_message.config(text="Status: Please enter text first.", fg="#ff4c4c")
 
     def run_application(self):
         self.build_user_interface()
