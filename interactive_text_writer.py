@@ -1,13 +1,15 @@
 import tkinter
+from tkinter import font
 
 class InteractiveTextWriter:
 
     def __init__(self, output_file_name):
         self.output_file_name = output_file_name
         self.main_window = tkinter.Tk()
-        self.main_window.title("Life Writer Tool")
-        self.main_window.geometry("400x200")
-
+        self.main_window.title("Life Writer Pro")
+        self.main_window.geometry("500x450")
+        self.main_window.configure(bg="#1e1e1e")
+        
     def build_user_interface(self):
         self.instruction_label = tkinter.Label(self.main_window, text="Enter a line for your life story:")
         self.instruction_label.pack()
