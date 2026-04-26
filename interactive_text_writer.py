@@ -26,6 +26,12 @@ class InteractiveTextWriter:
         self.status_message = tkinter.Label(self.main_window, text="Status: Ready to write...", font=normal_font, bg="#1e1e1e", fg="#aaaaaa")
         self.status_message.pack(pady=5)
 
+        self.history_label = tkinter.Label(self.main_window, text="Recent Entries:", font=normal_font, bg="#1e1e1e", fg="#00adb5")
+        self.history_label.pack(pady=(20, 0))
+        
+        self.entry_history_box = tkinter.Listbox(self.main_window, width=50, height=8, bg="#2d2d2d", fg="#ffffff", relief="flat", highlightthickness=0, font=("Helvetica", 10))
+        self.entry_history_box.pack(pady=5)
+
     def save_current_line(self):
         current_text = self.user_input_field.get()
         if current_text != "":
